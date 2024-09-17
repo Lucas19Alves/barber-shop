@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Barbearia XYZ</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/locale/pt-br.js"></script>
 </head>
 <body>
     <div class="admin-container">
@@ -20,16 +25,16 @@
         <div id="adminPanel" class="admin-panel" style="display:none;">
             <h2>Gerenciar Disponibilidades</h2>
             <form id="availabilityForm" class="form-card">
-                <label for="date">Data:</label>
-                <input type="date" id="date" name="date" required>
-                <label for="time">Horário:</label>
-                <input type="time" id="time" name="time" required>
+                <h3>Escolha a Data</h3>
+                <input type="text" id="datePicker" class="flatpickr" placeholder="Selecione a data">
+                <h3>Escolha os Horários</h3>
+                <div id="timeSelection" class="time-grid"></div>
                 <button type="submit" class="btn-primary">Adicionar Disponibilidade</button>
             </form>
             <h2>Disponibilidades</h2>
             <ul id="availabilityList" class="availability-list"></ul>
             <h2>Reservas</h2>
-            <ul id="reservationList" class="reservation-list"></ul>
+            <div id="reservationList" class="reservation-list"></div>
         </div>
     </div>
 

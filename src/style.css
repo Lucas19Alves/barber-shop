@@ -187,20 +187,20 @@ button:hover, .btn-primary:hover {
 .date-grid,
 .time-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(4, 1fr); /* Ajustado para 4 colunas para acomodar mais horários */
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 .date-grid button,
 .time-grid button {
-    padding: 15px;
+    padding: 10px;
     background-color: #f0f0f0;
     border: 2px solid #ddd;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #333;
 }
@@ -300,4 +300,62 @@ button:hover, .btn-primary:hover {
     margin-bottom: 0.5em;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-disabled {
+    background-color: #ff4d4d;
+    color: #fff; 
+    border-color: #ff4d4d; 
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.date-grid button.button-disabled,
+.time-grid button.button-disabled {
+    background-color: #ff4d4d; /* Cor vermelha */
+    color: #fff; /* Cor do texto branco */
+    border-color: #ff4d4d; /* Cor da borda vermelha */
+    cursor: not-allowed; /* Cursor de não permitido */
+    opacity: 0.6; /* Opacidade para indicar desativado */
+}
+
+.reservation-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.reservation-card {
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 1em);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.reservation-card h3 {
+    margin-top: 0;
+}
+
+.reservation-card p {
+    margin: 0.5em 0;
+}
+
+.reservation-card button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reservation-card button:hover {
+    background-color: #ff1a1a;
 }

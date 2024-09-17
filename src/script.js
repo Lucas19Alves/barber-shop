@@ -53,16 +53,23 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('admin_handler.php?action=getAvailabilities')
         .then(response => response.json())
         .then(data => {
+            // Ordena as datas da mais próxima para a mais distante
+            data.sort((a, b) => moment(a.date, 'DD-MM-YYYY').valueOf() - moment(b.date, 'DD-MM-YYYY').valueOf());
+
             dateSelection.innerHTML = '';
             data.forEach(item => {
-                const button = document.createElement('button');
-                const dateObj = new Date(item.date);
-                const dayName = new Intl.DateTimeFormat('pt-BR', { weekday: 'short' }).format(dateObj);
-                const formattedDate = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit' }).format(dateObj);
-                
-                button.innerHTML = `<span class="day-name">${dayName}</span><span class="date">${formattedDate}</span>`;
-                button.onclick = () => selectDate(item.date, button);
-                dateSelection.appendChild(button);
+                const dateObj = moment(item.date, 'DD-MM-YYYY', true);
+                if (dateObj.isValid()) {
+                    const dayName = dateObj.format('ddd');
+                    const formattedDate = dateObj.format('DD/MM');
+                    
+                    const button = document.createElement('button');
+                    button.innerHTML = `<span class="day-name">${dayName}</span><span class="date">${formattedDate}</span>`;
+                    button.onclick = () => selectDate(item.date, button);
+                    dateSelection.appendChild(button);
+                } else {
+                    console.error('Data inválida:', item.date);
+                }
             });
         });
     }
@@ -79,16 +86,29 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`admin_handler.php?action=getAvailabilities`)
         .then(response => response.json())
         .then(data => {
-            const selectedDateData = data.find(item => item.date === selectedDate);
-            if (selectedDateData) {
-                timeSelection.innerHTML = '';
-                selectedDateData.times.forEach(time => {
-                    const button = document.createElement('button');
-                    button.textContent = time;
-                    button.onclick = () => selectTime(time, button);
-                    timeSelection.appendChild(button);
-                });
-            }
+            fetch('admin_handler.php?action=getReservations')
+            .then(res => res.json())
+            .then(reservations => {
+                const selectedDateData = data.find(item => item.date === selectedDate);
+                if (selectedDateData) {
+                    timeSelection.innerHTML = '';
+                    selectedDateData.times.forEach(time => {
+                        const isReserved = reservations.some(reservation => 
+                            reservation.date === selectedDate && reservation.time === time
+                        );
+                        const button = document.createElement('button');
+                        button.textContent = time;
+                        if (isReserved) {
+                            button.classList.add('button-disabled');
+                            button.disabled = true;
+                            console.log(`Horário ${time} está reservado e foi desativado.`);
+                        } else {
+                            button.onclick = () => selectTime(time, button);
+                        }
+                        timeSelection.appendChild(button);
+                    });
+                }
+            });
         });
     }
 
@@ -109,16 +129,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `action=addReservation&name=${name}&phone=${phone}&email=${email}&date=${selectedDate}&time=${selectedTime}`
+                body: `action=addReservation&name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&date=${encodeURIComponent(selectedDate)}&time=${encodeURIComponent(selectedTime)}`
             })
-            .then(response => response.json())
-            .then(data => {
+            .then(response => response.text())
+            .then(text => {
+                console.log('Resposta do servidor:', text);
+                const data = JSON.parse(text);
                 if (data.success) {
                     modal.style.display = 'none';
                     alert('Reserva confirmada com sucesso!');
                 } else {
                     alert('Erro ao fazer a reserva. Por favor, tente novamente.');
                 }
+            })
+            .catch(error => {
+                console.error('Erro ao processar a resposta:', error);
+                alert('Erro ao fazer a reserva. Por favor, tente novamente.');
             });
         } else {
             alert('Por favor, selecione uma data e um horário.');
