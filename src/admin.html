@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Barbearia XYZ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Administração da Barbearia XYZ</h1>
+        <form id="loginForm" class="form-card">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+
+        <div id="adminPanel" class="admin-panel" style="display:none;">
+            <h2>Gerenciar Disponibilidades</h2>
+            <form id="availabilityForm" class="form-card">
+                <label for="date">Data:</label>
+                <input type="date" id="date" name="date" required>
+                <label for="time">Horário:</label>
+                <input type="time" id="time" name="time" required>
+                <button type="submit" class="btn-primary">Adicionar Disponibilidade</button>
+            </form>
+            <h2>Disponibilidades</h2>
+            <ul id="availabilityList" class="availability-list"></ul>
+            <h2>Reservas</h2>
+            <ul id="reservationList" class="reservation-list"></ul>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

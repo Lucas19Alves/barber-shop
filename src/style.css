@@ -1,0 +1,303 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-image: url('https://placehold.co/1920x600');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 5em 0;
+}
+
+.header-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2em;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+header p {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+section {
+    padding: 4em 2em;
+    text-align: center;
+}
+
+#services .service {
+    display: inline-block;
+    width: 30%;
+    margin: 1em;
+    vertical-align: top;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+}
+
+#services .service img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#about .about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+#about .about-content img {
+    width: 40%;
+    border-radius: 8px;
+}
+
+#testimonials .testimonial {
+    background-color: #fff;
+    padding: 2em;
+    margin: 1em auto;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#gallery .gallery-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+#gallery .gallery-content img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+button, .btn-primary {
+    display: inline-block;
+    margin: 1em auto;
+    padding: 1em 2em;
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button:hover, .btn-primary:hover {
+    background-color: #3700b3;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border: none;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #333;
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.modal-steps .step {
+    display: none;
+}
+
+.modal-steps .step.active {
+    display: block;
+}
+
+.modal-steps h3 {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.modal input[type="text"],
+.modal input[type="tel"],
+.modal input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.date-grid,
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.date-grid button,
+.time-grid button {
+    padding: 15px;
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.date-grid button:hover,
+.time-grid button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.date-grid button.selected,
+.time-grid button.selected {
+    background-color: #6200ea;
+    color: #fff;
+    border-color: #6200ea;
+    box-shadow: 0 4px 6px rgba(98, 0, 234, 0.3);
+}
+
+.date-grid button:focus,
+.time-grid button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(98, 0, 234, 0.3);
+}
+
+.date-grid button .day-name,
+.date-grid button .date {
+    display: block;
+}
+
+.date-grid button .day-name {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.date-grid button .date {
+    font-size: 18px;
+}
+
+.time-grid button {
+    font-size: 18px;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.admin-container {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-card {
+    background-color: #f9f9f9;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2em;
+}
+
+.form-card label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.form-card input {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin-panel {
+    display: none;
+}
+
+.scheduled-times {
+    list-style: none;
+    padding: 0;
+}
+
+.scheduled-times li {
+    background-color: #f9f9f9;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

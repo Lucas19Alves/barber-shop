@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia XYZ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Bem-vindo à Barbearia XYZ</h1>
+            <p>Seu estilo, nossa missão</p>
+            <button id="reserveButton" class="btn-primary">Reservar Horário</button>
+        </div>
+    </header>
+
+    <section id="services">
+        <h2>Nossos Serviços</h2>
+        <div class="service">
+            <img src="https://placehold.co/300x200" alt="Corte de Cabelo">
+            <h3>Corte de Cabelo</h3>
+            <p>Oferecemos cortes modernos e clássicos para todos os estilos.</p>
+        </div>
+        <div class="service">
+            <img src="https://placehold.co/300x200" alt="Barba">
+            <h3>Barba</h3>
+            <p>Cuidados especiais para sua barba, com produtos de alta qualidade.</p>
+        </div>
+        <div class="service">
+            <img src="https://placehold.co/300x200" alt="Tratamentos">
+            <h3>Tratamentos</h3>
+            <p>Tratamentos capilares para manter seu cabelo saudável e forte.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>Sobre Nós</h2>
+        <div class="about-content">
+            <img src="https://placehold.co/400x300" alt="Nossa Equipe">
+            <div>
+                <p>Somos uma barbearia dedicada a oferecer o melhor serviço para nossos clientes. Nossa equipe é composta por profissionais experientes e apaixonados pelo que fazem.</p>
+                <p>Venha nos conhecer e desfrutar de um ambiente acolhedor e amigável.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>Depoimentos</h2>
+        <div class="testimonial">
+            <p>"A Barbearia XYZ é incrível! Sempre saio satisfeito com o corte e o atendimento."</p>
+            <p>- João Silva</p>
+        </div>
+        <div class="testimonial">
+            <p>"Melhor barbearia da cidade! Recomendo a todos."</p>
+            <p>- Maria Oliveira</p>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Galeria</h2>
+        <div class="gallery-content">
+            <img src="https://placehold.co/200x200" alt="Galeria 1">
+            <img src="https://placehold.co/200x200" alt="Galeria 2">
+            <img src="https://placehold.co/200x200" alt="Galeria 3">
+            <img src="https://placehold.co/200x200" alt="Galeria 4">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contato</h2>
+        <p>Entre em contato conosco para mais informações ou para agendar um horário.</p>
+        <p>Email: contato@barbeariaxyz.com</p>
+        <p>Telefone: (11) 1234-5678</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Barbearia XYZ. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Reservar Horário</h2>
+            <div class="modal-steps">
+                <div class="step active" id="step1">
+                    <h3>Dados Pessoais</h3>
+                    <form id="personalDataForm">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="phone">Telefone:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <button type="button" id="nextStep" class="btn-primary">Próximo</button>
+                    </form>
+                </div>
+                <div class="step" id="step2">
+                    <h3>Escolha a Data</h3>
+                    <div id="dateSelection" class="date-grid"></div>
+                    <button type="button" id="prevStep1" class="btn-secondary">Voltar</button>
+                </div>
+                <div class="step" id="step3">
+                    <h3>Escolha o Horário</h3>
+                    <div id="timeSelection" class="time-grid"></div>
+                    <button type="button" id="prevStep2" class="btn-secondary">Voltar</button>
+                    <button type="button" id="confirmReservation" class="btn-primary">Confirmar Reserva</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
